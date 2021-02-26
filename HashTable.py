@@ -13,11 +13,13 @@ class HashTable:
   # This method creates an array (list) of a given size and populates each of its elements with a LinkedList object.
 
   def create_arr(self, size):
-    
+    # creates array for linked list
     arr = []
-    # I need a new list to catch every splice word and return its value to count
+    # I need every linked list to append to the array
     for i in range(size):
+      #creating new linked list
       new_link = LinkedList()
+      #adding it to the array
       arr.append(new_link)
     return arr
 
@@ -27,8 +29,19 @@ class HashTable:
   # Hash functions are a function that turns each of these keys into an index value that we can use to decide where in our list each key:value pair should be stored. 
 
   def hash_func(self, key):
+    # 1. Get the first letter of the key and lower case it 
+    first_letter = key[0].lower()
+
+    # 2. Calculate the distance from letter a
+    distance_from_a = ord(first_letter) - ord('a')
+
+    # 3. Mod it to make sure it is in range
+    index = distance_from_a % self.size
+
+    # returns index 
+    return index
+
     
-    pass
 
 
   # 3️⃣ TODO: Complete the insert method.
