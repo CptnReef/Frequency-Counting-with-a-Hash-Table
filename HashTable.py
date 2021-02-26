@@ -24,6 +24,7 @@ class HashTable:
     return arr
 
 
+
   # 2️⃣ TODO: Create your own hash function.
 
   # Hash functions are a function that turns each of these keys into an index value that we can use to decide where in our list each key:value pair should be stored. 
@@ -31,17 +32,13 @@ class HashTable:
   def hash_func(self, key):
     # 1. Get the first letter of the key and lower case it 
     first_letter = key[0].lower()
-
     # 2. Calculate the distance from letter a
     distance_from_a = ord(first_letter) - ord('a')
-
     # 3. Mod it to make sure it is in range
     index = distance_from_a % self.size
-
     # returns index 
     return index
 
-    
 
 
   # 3️⃣ TODO: Complete the insert method.
@@ -49,8 +46,22 @@ class HashTable:
   # Should insert a key value pair into the hash table, where the key is the word and the value is a counter for the number of times the word appeared. When inserting a new word in the hash table, be sure to check if there is a Node with the same key in the table already.
 
   def insert(self, key, value):
-    pass
+    # Check link_link is empty or not.  
+    index = self.hash_func(key)
+    linked_ls = self.arr[index]
+    current = linked_ls.head
 
+    # Going through the Hash Table for an empty node to assign key/value
+    while current != None:
+      # add if current node and key is True
+      if current.data[0] == key:
+        current.data[1] += value
+        return
+      # goes to the next node
+      current = current.next
+
+    # After Checking through Hash Table and linked list is empty
+    linked_ls.append((key, value))
 
 
 
