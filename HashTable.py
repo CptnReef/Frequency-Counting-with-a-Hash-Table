@@ -31,7 +31,7 @@ class HashTable:
 
   def hash_func(self, key):
     # 1. Get the first letter of the key and lower case it 
-    first_letter = key[0].lower()
+    first_letter = key[0].lower() #"[a]pple"
     # 2. Calculate the distance from letter a
     distance_from_a = ord(first_letter) - ord('a')
     # 3. Mod it to make sure it is in range
@@ -46,10 +46,10 @@ class HashTable:
   # Should insert a key value pair into the hash table, where the key is the word and the value is a counter for the number of times the word appeared. When inserting a new word in the hash table, be sure to check if there is a Node with the same key in the table already.
 
   def insert(self, key, value):
-    # Check link_link is empty or not.  
+    # Check link_list is empty or not.  
     index = self.hash_func(key)
-    linked_ls = self.arr[index]
-    current = linked_ls.head
+    self.linked_ls = self.arr[index]
+    current = self.linked_ls.head
 
     # Going through the Hash Table for an empty node to assign key/value
     while current != None:
@@ -61,8 +61,8 @@ class HashTable:
       current = current.next
 
     # After Checking through Hash Table and linked list is empty
-    linked_ls.append((key, value))
-
+    self.linked_ls.append([key, value])
+    
 
 
   # 4️⃣ TODO: Complete the print_key_values method.
@@ -77,6 +77,16 @@ class HashTable:
   # erase: 2
 
   def print_key_values(self):
-    pass
+    
+    #Check all linked lists in the hashtable
+    for self.linked_ls in self.arr:
+      current = self.linked_ls.head
+      
+      while current != None:
+        if current.data:
+          print(f'({current.data[0]}: {current.data[1]}')
+        current = current.next
+              
+          
 
     
